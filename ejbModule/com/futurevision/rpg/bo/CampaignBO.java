@@ -1,48 +1,43 @@
 package com.futurevision.rpg.bo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
 
 import com.futurevision.rpg.bo.inter.CampaignBOI;
+import com.futurevision.rpg.dao.impl.CampaignDAO;
+import com.futurevision.rpg.dao.inter.CampaignDAOI;
 import com.futurevision.rpg.entity.Campaign;
 
 @Stateless
 public class CampaignBO implements Serializable, CampaignBOI {
 
+	private CampaignDAOI campaignDao;
+
+	public CampaignBO() {
+		campaignDao = new CampaignDAO();
+	}
+
 	public List<Campaign> getListCampaign() {
-		// TODO implementar
-
-		// Para Testes
-		
-		List<Campaign> campaigns  = new ArrayList<Campaign>();
-		
-		for(int i = 0; i< 10; i++ ){
-			Campaign c = new Campaign();
-			c.setDescription("Description " + i);
-			campaigns.add(c);
-		}
-
-		return campaigns;
+		return campaignDao.listAll();
 	}
 
 	public void insertCampaign(Campaign c) {
-		// TODO implementar
+		if (c == null) return;
+		campaignDao.insert(c);
 	}
 
-	public Campaign searchCampaignById(Long id) {
-		// TODO implementar
-		return null;
+	public Campaign searchCampaignById(int id) {
+		return campaignDao.findById(id);
 	}
 
 	public void removeCampaign(Campaign c) {
-		// TODO implementar
+		campaignDao.remove(c);
 	}
 
 	public void updateCampaign(Campaign c) {
-		// TODO implementar
+		campaignDao.update(c);
 	}
 
 }

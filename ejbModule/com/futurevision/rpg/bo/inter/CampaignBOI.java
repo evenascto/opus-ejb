@@ -14,7 +14,7 @@ public interface CampaignBOI {
 
 	public void insertCampaign(Campaign c);
 
-	public Campaign searchCampaignById(Long id);
+	public Campaign searchCampaignById(int id);
 
 	public void removeCampaign(Campaign c);
 

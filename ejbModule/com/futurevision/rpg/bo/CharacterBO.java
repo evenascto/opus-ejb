@@ -3,49 +3,47 @@ package com.futurevision.rpg.bo;
 import java.io.Serializable;
 
 import com.futurevision.rpg.bo.inter.CharacterBOI;
+import com.futurevision.rpg.dao.impl.CharacterDAO;
+import com.futurevision.rpg.dao.inter.CharacterDAOI;
+import com.futurevision.rpg.entity.Character;
 import com.futurevision.rpg.entity.Item;
 
 public class CharacterBO implements Serializable, CharacterBOI {
+	private CharacterDAOI characterDao;
 
-	/* (non-Javadoc)
-	 * @see com.futurevision.rpg.bo.CharacterBOI#insertCharacter(java.lang.Character)
-	 */
+	public CharacterBO() {
+		characterDao = new CharacterDAO();
+	}
+
 	@Override
 	public void insertCharacter(Character c) {
-		// TODO implementar
+		characterDao.insert(c);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.futurevision.rpg.bo.CharacterBOI#searchCharacterById(java.lang.Long)
-	 */
 	@Override
-	public Character searchCharacterById(Long id) {
-		// TODO implementar
-		return null;
+	public Character searchCharacterById(int id) {
+		return characterDao.findById(id);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.futurevision.rpg.bo.CharacterBOI#removeCharacter(java.lang.Character)
-	 */
 	@Override
 	public void removeCharacter(Character c) {
-		// TODO implementar
+		if (c == null)
+			return;
+		characterDao.remove(c);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.futurevision.rpg.bo.CharacterBOI#updateCharacter(java.lang.Character)
-	 */
 	@Override
 	public void updateCharacter(Character c) {
-		// TODO implementar
+		if (c == null)
+			return;
+		characterDao.update(c);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.futurevision.rpg.bo.CharacterBOI#dressEquipment(java.lang.Character, com.futurevision.rpg.entity.Item)
-	 */
 	@Override
 	public void dressEquipment(Character c, Item i) {
-		// TODO Implementar
+		if (c == null || i == null) {
+			return;
+		}
 	}
 
 }

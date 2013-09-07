@@ -2,6 +2,7 @@ package com.futurevision.rpg.bo.inter;
 
 import javax.ejb.Local;
 
+import com.futurevision.rpg.entity.Character;
 import com.futurevision.rpg.entity.Item;
 
 @Local
@@ -9,7 +10,7 @@ public interface CharacterBOI {
 
 	public abstract void insertCharacter(Character c);
 
-	public abstract Character searchCharacterById(Long id);
+	public abstract Character searchCharacterById(int id);
 
 	public abstract void removeCharacter(Character c);
 

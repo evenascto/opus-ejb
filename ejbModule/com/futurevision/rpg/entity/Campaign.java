@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -18,6 +19,7 @@ import javax.persistence.SequenceGenerator;
  */
 @Entity
 @SequenceGenerator(name = "CAMPAIGN_ID_GENERATOR", sequenceName = "SEQ_CAMPAIGN")
+@NamedQuery(name = "campaign.listAll", query = "select c from Campaign c")
 public class Campaign implements Serializable {
 	private static final long serialVersionUID = 1L;
 
